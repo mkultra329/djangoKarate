@@ -1,15 +1,15 @@
 from django.db import models
 
 class Student(models.Model):
+    username = models.CharField(max_length=10)
     last_name = models.CharField(max_length=30)
     first_name = models.CharField(max_length=30)
-    students_dojo = models.ForeignKey('Dojo')
+
+    def __str__(self):
+        return self.username
 
 class Dojo(models.Model):
     dojo_name = models.CharField(max_length=50)
-    dojo_admin = models.ForeignKey('Instructors')
-
-class Instructors(models.Model):
-    uname = models.CharField(max_length=15)
-    last_name = models.CharField(max_length=30)
-    first_name = models.CharField(max_length=30)
+    
+    def __str__(self):
+        return self.dojo_name
